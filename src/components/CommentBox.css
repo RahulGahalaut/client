@@ -1,0 +1,51 @@
+.comments-container {
+  background-color: rgb(100, 100, 130, 0.5);
+  margin-top: 5px;
+  padding: 20px;
+  border-radius: 0px 20px;
+  box-shadow: 3px 2px 6px 0px green;
+  transform-origin: top left;
+  animation: rotate-box-x 1s 1, slowly 1s 1;
+}
+@keyframes slowly {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes rotate-box-x {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.comment-box textarea {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+}
+.comment-box textarea:focus {
+  outline: black solid 1px;
+}
+
+.add-comment-button {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+
+.comment p {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 0 5px 0;
+  background: linear-gradient(90deg, rgb(220, 220, 220, 0.3) 50%, grey);
+}

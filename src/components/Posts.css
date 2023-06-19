@@ -1,0 +1,11 @@
+.posts-container {
+  background-color: rgb(220, 210, 210);
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+@media (max-width: 768px) {
+  .posts-container {
+    padding: 5px;
+  }
+}

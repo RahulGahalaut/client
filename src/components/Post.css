@@ -1,0 +1,82 @@
+.post-comment-wrapper {
+  padding: 20px;
+  background: linear-gradient(135deg, black 50%, darkgreen 90%);
+  margin: 20px 0;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.post-comment-wrapper:first-of-type {
+  margin-top: 0px;
+}
+.post-comment-wrapper:last-of-type {
+  margin-bottom: 0;
+}
+.post-container {
+  background-color: rgb(255, 255, 255, 0.75);
+  padding: 15px;
+  border-radius: 15px;
+}
+.post-title {
+  background: linear-gradient(174deg, black 00%, gray 100%);
+  color: white;
+  font-size: larger;
+  padding-left: 10px;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.post-content {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: larger;
+}
+.comment-container {
+  margin-top: 5px;
+}
+.author-container {
+  margin: 0px;
+  display: flex;
+  justify-content: end;
+}
+.author {
+  font-size: larger;
+}
+.comment-controller {
+  width: 120px;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 5px;
+  background: seagreen;
+  color: white;
+}
+.comment-controller:hover {
+  background: darkgreen;
+  box-shadow: 0 0 2px 2px white;
+}
+
+@media (max-width: 768px) {
+  .post-comment-wrapper {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 15px;
+  }
+  .post-container {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .post-title {
+    padding-left: 5px;
+    font-size: large;
+  }
+  .post-content {
+    font-size: large;
+  }
+  .comment-controller {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .comment-controller:hover {
+    box-shadow: 0 0 1px 1px white;
+  }
+  .author {
+    font-size: large;
+  }
+}
