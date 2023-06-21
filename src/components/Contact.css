@@ -1,0 +1,57 @@
+.developer-container {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(220, 210, 210);
+}
+
+.developer-profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.developer-info {
+    width: 80%;
+    font: larger;
+}
+
+.developer-contact-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(225, 225, 200);
+}
+
+.developer-contact-container a {
+    color: blue;
+}
+
+.contact-icon {
+    padding: 20px;
+}
+
+@media (max-width:768px) {
+
+    .developer-info {
+        width: 100%;
+    }
+
+    .developer-profile-pic {
+        width: 125px;
+        height: 125px
+    }
+
+    .developer-info {
+        width: 100%;
+        font: large;
+    }
+
+    .developer-contact-container {
+        width: 100%;
+    }
+}

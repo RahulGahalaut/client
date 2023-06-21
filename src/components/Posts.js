@@ -18,14 +18,14 @@ export default () => {
 
   }, [])
 
-  const deletePost=(deletedPost)=>{
-    const remainingPosts=posts.filter(post=>post._id!==deletedPost._id)
+  const deletePost = (deletedPost) => {
+    const remainingPosts = posts.filter(post => post._id !== deletedPost._id)
     setPosts(remainingPosts)
   }
   return posts ? (
     <div className="posts-container">
       {posts.map((post) => (
-        <Post post={post} deleteFromParent={deletePost}/>
+        <Post post={post} deleteFromParent={deletePost} />
       ))}
     </div>
   ) : (

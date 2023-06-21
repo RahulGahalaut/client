@@ -5,11 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-image: url("../../public/assets/login-page.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .login-form {
   width: 40%;
   min-width: max-content;
@@ -21,6 +22,7 @@
   padding: 40px;
   border-radius: 20px;
 }
+
 .login-form input {
   width: 80%;
   margin: 5px;
@@ -29,9 +31,11 @@
   border-radius: 10px;
   font-size: larger;
 }
+
 .login-form input::placeholder {
   font-size: 15px;
 }
+
 .login-form input:focus {
   border: none;
   outline: none;
@@ -39,6 +43,7 @@
   transform: scale(1.05);
   transition: transform 0.2s ease-in;
 }
+
 .submit-button {
   margin-top: 10px;
   padding: 10px;
@@ -48,6 +53,7 @@
   border-radius: 8px;
   color: white;
 }
+
 .submit-button:hover {
   box-shadow: 0 0 1px white;
 }
@@ -57,12 +63,14 @@
     padding: 20px;
     border-radius: 20px;
   }
+
   .login-form input {
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
     font-size: large;
   }
+
   .submit-button {
     margin-top: 10px;
     padding: 8px;

@@ -1,5 +1,6 @@
 import { useState, useRef } from "react"
-export default ({ comment,updateCommentSet,deleteFromCommentSet }) => {
+import { FaTrash, FaEdit } from 'react-icons/fa';
+export default ({ comment, updateCommentSet, deleteFromCommentSet }) => {
     console.log(comment);
     const [edit, setEdit] = useState(false);
     const editedText = useRef()
@@ -16,7 +17,7 @@ export default ({ comment,updateCommentSet,deleteFromCommentSet }) => {
                 if ("message" in data) {
                     alert(data.message)
                 }
-                else{
+                else {
                     console.log(data)
                     deleteFromCommentSet(comment)
                 }
@@ -39,7 +40,7 @@ export default ({ comment,updateCommentSet,deleteFromCommentSet }) => {
                 if ("message" in data) {
                     alert(data.message)
                 }
-                else{
+                else {
                     console.log(data)
                     updateCommentSet(data)
                     setEdit(false)
@@ -48,7 +49,7 @@ export default ({ comment,updateCommentSet,deleteFromCommentSet }) => {
             })
     }
 
-    return  (
+    return (
         <div className="comment">
             <p>
                 <b>
@@ -64,13 +65,13 @@ export default ({ comment,updateCommentSet,deleteFromCommentSet }) => {
                         {
                             edit ? (
                                 <>
-                                    <button onClick={updateThisComment}>update</button>
-                                    <button onClick={() => setEdit(false)}>X</button>
+                                    <button onClick={updateThisComment}>Update</button>
+                                    <button onClick={() => setEdit(false)}>x</button>
                                 </>
                             ) : (
                                 <>
-                                    <button onClick={deleteThisComment}>delete</button>
-                                    <button onClick={() => setEdit(true)}>edit</button>
+                                    <button onClick={deleteThisComment}><FaTrash /></button>
+                                    <button onClick={() => setEdit(true)}><FaEdit /></button>
                                 </>
                             )
                         }
@@ -79,6 +80,6 @@ export default ({ comment,updateCommentSet,deleteFromCommentSet }) => {
             </p>
 
         </div >
-    ) 
-    
+    )
+
 }
