@@ -5,8 +5,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    background-color: rgb(220, 210, 210);
+    padding: 20px;
+    background-color: rgb(210, 220, 219);
+}
+
+.developer-container h1 {
+    margin: 0;
+    padding: 0;
 }
 
 .developer-profile-pic {
@@ -24,15 +29,24 @@
     width: 80%;
     display: flex;
     justify-content: space-evenly;
-    background-color: rgb(225, 225, 200);
+    background-color: rgb(225, 225, 180);
+    padding: 10px;
 }
 
 .developer-contact-container a {
     color: blue;
 }
 
+.developer-contact-container a:active {
+    color: red;
+}
+
 .contact-icon {
-    padding: 20px;
+    font-size: 30px;
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 10px;
+
 }
 
 @media (max-width:768px) {
@@ -53,5 +67,9 @@
 
     .developer-contact-container {
         width: 100%;
+    }
+
+    .contact-icon {
+        font-size: 25px;
     }
 }

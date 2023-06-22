@@ -8,7 +8,7 @@ export default () => {
     const createNewPost = (e) => {
         e.preventDefault();
         fetch(`http://localhost:5000/posts/create`, {
-            method:"POST",
+            method: "POST",
             headers: {
                 "content-type": "application/json",
                 "authorization": `Bearer ${localStorage.getItem("login-token")}`
@@ -27,10 +27,9 @@ export default () => {
     return (
         <div className="new-post-container">
             <div class="form-container">
-                <input ref={title} className="new-post-title" type="text" placeholder="Enter Title" minLength="10"/>
-                <textarea ref={content} className="new-post-content" type="text" placeholder="what you wanna share...?" rows="20" minLength="40"/>
+                <input ref={title} className="new-post-title" type="text" placeholder="Enter Title" minLength="10" />
+                <textarea ref={content} className="new-post-content" type="text" placeholder="what you wanna share...?" rows="20" minLength="40" />
                 <button onClick={createNewPost}>Create Post</button>
-
             </div>
         </div>
     )

@@ -1,0 +1,20 @@
+.about-container {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(210, 220, 219);
+}
+
+.about-container .about-info {
+    width: 80%;
+}
+
+@media (max-width:768px) {
+    .about-container .about-info {
+        width: 100%;
+    }
+}

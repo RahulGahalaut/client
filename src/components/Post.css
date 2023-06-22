@@ -1,7 +1,8 @@
 .post-comment-wrapper {
+  width: 80%;
   padding: 20px;
   background: linear-gradient(135deg, black 50%, darkgreen 90%);
-  margin: 20px 0;
+  margin: 10px 0;
   border-radius: 30px;
   overflow: hidden;
 }
@@ -68,6 +69,7 @@
 
 @media (max-width: 768px) {
   .post-comment-wrapper {
+    width: 100%;
     padding: 10px;
     margin: 5px 0;
     border-radius: 15px;

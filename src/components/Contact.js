@@ -3,8 +3,8 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaPhone, FaEnvelope, } f
 export default () => {
   return (
     <div className="developer-container">
-      <h1>About Me</h1>
       <img className="developer-profile-pic" src="./assets/profile-pic.jpg" />
+      <h1>Rahul Gahalaut</h1>
       <div className="developer-info">
         <p>
           I'm a passionate software developer with expertise in React and JavaScript. I enjoy building web applications and creating user-friendly interfaces. With a strong focus on writing clean and maintainable code, I strive to deliver high-quality solutions.
@@ -15,12 +15,12 @@ export default () => {
         </p>
       </div>
       <div className="developer-contact-container">
-        <a href="https://www.linkedin.com/in/rahul-gahalaut-049827193/"><FaLinkedin className="contact-icon" /></a>
-        <a href="https://github.com/RahulGahalaut"><FaGithub className="contact-icon" /></a>
-        <a href="mailto:rahulgahalaut333@gmail.com"><FaEnvelope className="contact-icon" /></a>
-        <a href="tel:+919027237648"><FaPhone className="contact-icon" /></a>
-        <a href="https://www.instagram.com/rahul_gahalaut/"><FaInstagram className="contact-icon" /></a>
-        <a href="https://www.facebook.com/RahulGahalaut333/"><FaFacebook className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_LINKEDIN}><FaLinkedin className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_GITHUB}><FaGithub className="contact-icon" /></a>
+        <a href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}><FaEnvelope className="contact-icon" /></a>
+        <a href={`tel:${process.env.REACT_APP_CONTACT_PHONE}`}><FaPhone className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_INSTAGRAM}><FaInstagram className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_FACEBOOK}><FaFacebook className="contact-icon" /></a>
       </div>
 
     </div>
