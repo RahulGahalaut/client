@@ -1,0 +1,36 @@
+.post-card {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 10px 10px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.post-card h3,
+.post-card author {
+    margin: 0;
+}
+
+.post-card-title {
+    background-color: rgba(200, 200, 200, 0.4);
+    padding: 2px 4px;
+}
+
+.username-time-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font: 100;
+}
+
+.post-link {
+    text-decoration: none;
+    color: blue;
+    float: right;
+}
+
+.post-link:active {
+    color: red;
+}

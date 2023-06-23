@@ -1,5 +1,4 @@
 .post-comment-wrapper {
-  width: 80%;
   padding: 20px;
   background: linear-gradient(135deg, black 50%, darkgreen 90%);
   margin: 10px 0;
@@ -11,6 +10,7 @@
   margin-top: 0px;
 }
 
+
 .post-comment-wrapper:last-of-type {
   margin-bottom: 0;
 }
@@ -20,9 +20,8 @@
 }
 
 .post-container {
-  background-color: rgb(255, 255, 255, 0.75);
+  background-color: rgb(210, 220, 219);
   padding: 15px;
-  border-radius: 15px;
 }
 
 .post-title {
@@ -46,11 +45,25 @@
 .author-container {
   margin: 0px;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
-.author {
-  font-size: larger;
+.author-container * {
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0.6;
+  padding: 0 5px;
+}
+
+
+.post-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .comment-controller {
@@ -67,9 +80,24 @@
   box-shadow: 0 0 2px 2px white;
 }
 
+.icon-count-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.icon-count-wrapper * {
+  margin: 0 1px;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+
 @media (max-width: 768px) {
   .post-comment-wrapper {
-    width: 100%;
     padding: 10px;
     margin: 5px 0;
     border-radius: 15px;
@@ -81,7 +109,6 @@
 
   .post-container {
     padding: 10px;
-    border-radius: 10px;
   }
 
   .post-title {
@@ -102,7 +129,5 @@
     box-shadow: 0 0 1px 1px white;
   }
 
-  .author {
-    font-size: large;
-  }
+
 }

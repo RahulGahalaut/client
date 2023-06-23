@@ -1,6 +1,6 @@
 import "./Posts.css";
-import Post from "./Post";
 import { useState, useEffect } from "react";
+import PostCard from "./PostCard";
 export default () => {
   const [posts, setPosts] = useState();
   useEffect(() => {
@@ -18,14 +18,10 @@ export default () => {
 
   }, [])
 
-  const deletePost = (deletedPost) => {
-    const remainingPosts = posts.filter(post => post._id !== deletedPost._id)
-    setPosts(remainingPosts)
-  }
   return posts ? (
     <div className="posts-container">
       {posts.map((post) => (
-        <Post post={post} deleteFromParent={deletePost} />
+        <PostCard post={post} />
       ))}
     </div>
   ) : (

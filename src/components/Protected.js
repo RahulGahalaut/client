@@ -1,7 +1,7 @@
 import "./Protected.css";
 import { NavLink, Outlet, Navigate, useNavigate } from "react-router-dom";
 const ProtectedContent = () => {
-  const navigateTo=useNavigate()
+  const navigateTo = useNavigate()
   const tabs = [
     {
       name: "Posts",
