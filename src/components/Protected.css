@@ -3,6 +3,7 @@
   border-radius: 10px;
   padding: 20px;
 }
+
 .navbar {
   padding: 10px;
   position: sticky;
@@ -13,6 +14,7 @@
   background: black;
   border-radius: 10px 10px 0 0;
 }
+
 .navbar-brand {
   font-weight: bold;
   color: white;
@@ -20,6 +22,7 @@
   padding: 10px;
   border-radius: 10px 0px;
 }
+
 .nav-link {
   text-decoration: none;
   font-weight: 900;
@@ -28,13 +31,16 @@
   font-size: larger;
   color: white;
 }
-.active {
+
+.navbar .active {
   padding-bottom: 5px;
   border-bottom: 5px solid green;
 }
+
 .nav-link:hover:not(.active) {
   background-color: rgb(255, 255, 255, 0.1);
 }
+
 .logout-button {
   color: white;
   background-color: rgb(100, 100, 230);
@@ -42,6 +48,7 @@
   border: none;
   border-radius: 5px;
 }
+
 .logout-button:hover {
   color: rgb(100, 100, 230);
   background-color: white;
@@ -54,20 +61,25 @@
     border-radius: 5px;
     padding: 5px;
   }
+
   .navbar {
     padding: 5px;
   }
+
   .navbar-brand {
     padding: 3px;
     border-radius: 3px 0px;
   }
+
   .nav-link {
     font-weight: 800;
     font-size: large;
   }
+
   .logout-button {
     padding: 5px;
   }
+
   .logout-button:hover {
     box-shadow: 0 0 0 1px rgb(100, 100, 230);
   }

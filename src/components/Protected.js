@@ -17,16 +17,8 @@ const ProtectedContent = () => {
       redirect_to: "/contact"
     },
     {
-      name: "Fav Posts",
-      redirect_to: "/favourites"
-    },
-    {
-      name: "My Post",
-      redirect_to: "/my-posts"
-    },
-    {
-      name: "Create Post",
-      redirect_to: "/create-post"
+      name: "Profile",
+      redirect_to: "/profile"
     }
   ];
   return localStorage.getItem("login-token") ? (

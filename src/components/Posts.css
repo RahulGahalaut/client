@@ -9,6 +9,6 @@
 @media (max-width: 768px) {
   .posts-container {
     padding: 5px;
-    display: block;
+    grid-template-columns: auto;
   }
 }

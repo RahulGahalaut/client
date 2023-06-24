@@ -1,0 +1,21 @@
+.personal-navbar {
+    background-color: grey;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3px;
+}
+
+.personal-nav-link {
+    color: black;
+    text-decoration: none;
+    padding: 2px;
+}
+
+.personal-nav-link:hover:not(.active) {
+    background-color: rgb(255, 255, 255, 0.1);
+}
+
+.personal-navbar .active {
+    background-color: rgba(255, 255, 255, 0.6);
+}
