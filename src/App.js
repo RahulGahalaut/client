@@ -9,6 +9,8 @@ import Home from "./components/Home";
 import CreatePost from "./components/CreatePost";
 import SignupForm from "./components/SignupForm";
 import PostById from "./components/PostById";
+import FavPosts from "./components/FavPosts";
+import MyPosts from "./components/MyPosts";
 export default function App() {
 
   return (
@@ -21,12 +23,13 @@ export default function App() {
               <ProtectedContent />
             }
           >
-            {/* <Route path="posts/:postId" element={<PostById posts={posts} />} /> */}
             <Route index element={<Home />} />
             <Route path="create-post" element={<CreatePost />} />
             <Route path="posts" element={<Posts />} />
             <Route path="contact" element={<Contact />} />
             <Route path="about" element={<About />} />
+            <Route path="favourites" element={<FavPosts />} />
+            <Route path="my-posts" element={<MyPosts />} />
             <Route path="post/:postId" element={<PostById />} />
             <Route path="*" element={<h1>Route Not Defined!</h1>} />
           </Route>

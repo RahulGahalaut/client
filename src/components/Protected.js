@@ -1,4 +1,5 @@
 import "./Protected.css";
+import { } from "react-icons/fa"
 import { NavLink, Outlet, Navigate, useNavigate } from "react-router-dom";
 const ProtectedContent = () => {
   const navigateTo = useNavigate()
@@ -14,6 +15,14 @@ const ProtectedContent = () => {
     {
       name: "Contact",
       redirect_to: "/contact"
+    },
+    {
+      name: "Fav Posts",
+      redirect_to: "/favourites"
+    },
+    {
+      name: "My Post",
+      redirect_to: "/my-posts"
     },
     {
       name: "Create Post",

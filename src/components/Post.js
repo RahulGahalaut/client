@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import { json, useNavigate } from "react-router-dom";
 import "./Post.css";
 import CommentBox from "./CommentBox";
-import { FaTrash, FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaTrash, FaHeart, FaRegHeart, FaStar, FaRegStar } from 'react-icons/fa';
 
 export default ({ post }) => {
 
   const navigateTo = useNavigate()
   let [showComment, setShowComment] = useState(false);
   let [doLike, setDoLike] = useState(true);
+  let [isFav, setIsFav] = useState()
   let [likesCount, setLikesCount] = useState();
   const createdAt = new Date(post.createdAt);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reactions/${post._id}`, {
+    fetch(`http://localhost:5000/reactions/like/${post._id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -26,9 +27,9 @@ export default ({ post }) => {
           alert(reactionObject.message)
         }
         else {
-          console.log(reactionObject.doLike)
-          setLikesCount(reactionObject.reactions);
-          setDoLike(reactionObject.doLike)
+          setLikesCount(reactionObject.likes);
+          setDoLike(reactionObject.doLike);
+          setIsFav(reactionObject.isFav)
         }
       })
   }, [])
@@ -55,8 +56,9 @@ export default ({ post }) => {
     }
   }
 
-  const deleteReaction = () => {
-    fetch(`http://localhost:5000/reactions/${post._id}`, {
+
+  const deleteLikeOnPost = () => {
+    fetch(`http://localhost:5000/reactions/like/${post._id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -75,16 +77,13 @@ export default ({ post }) => {
       })
   }
 
-  const postReaction = () => {
-    fetch(`http://localhost:5000/reactions/${post._id}`, {
+  const postLikeOnPost = () => {
+    fetch(`http://localhost:5000/reactions/like/${post._id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
         "authorization": `Bearer ${localStorage.getItem("login-token")}`
-      },
-      body: JSON.stringify({
-        "like": true
-      })
+      }
     })
       .then(response => response.json())
       .then(reactionObject => {
@@ -99,15 +98,72 @@ export default ({ post }) => {
 
   }
 
-  const clickHandler = () => {
+  const deleteFavMarkOnPost = () => {
+    console.log("delete method invoked!")
+    fetch(`http://localhost:5000/reactions/favs/${post._id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem("login-token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(reactionObject => {
+        if ("message" in reactionObject) {
+          alert(reactionObject.message)
+        }
+        else {
+          setIsFav(false)
+        }
+      })
+  }
+  const markFavOnPost = () => {
+    fetch(`http://localhost:5000/reactions/favs/${post._id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem("login-token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(reactionObject => {
+        if ("message" in reactionObject) {
+          alert(reactionObject.message)
+        }
+        else {
+          setIsFav(true)
+        }
+      })
 
-    doLike ? deleteReaction() : postReaction();
+  }
+
+  const clickHandlerForLike = () => {
+
+    doLike ? deleteLikeOnPost() : postLikeOnPost();
+
+  }
+
+  const clickHandlerForFav = () => {
+
+    isFav ? deleteFavMarkOnPost() : markFavOnPost();
 
   }
 
 
   return (
     <div className="post-comment-wrapper">
+      {
+        isFav ? (
+          <div className="fav-container">
+            <div className="fav">Favourite <FaStar className="icon" onClick={clickHandlerForFav} /></div>
+          </div>
+        ) : (
+          <div className="fav-container">
+            <div className="fav"><FaRegStar className="icon" onClick={clickHandlerForFav} /></div>
+          </div>
+        )
+      }
+
       <div className="post-container">
         <h3 className="post-title">{post.title}</h3>
         <p className="post-content">{post.content}</p>
@@ -116,6 +172,7 @@ export default ({ post }) => {
           <i className="author">- {post.author.username}</i>
         </p>
       </div>
+
       <div className="comment-container">
         <div className="post-buttons-wrapper">
           <button
@@ -125,10 +182,13 @@ export default ({ post }) => {
             {showComment ? "Hide Comment" : "Show Comments"}
           </button>
           <div className="action-wrapper">
-            {doLike ?
-              <div className="icon-count-wrapper"><FaHeart className="icon" onClick={clickHandler} /><div className="likesCount">{likesCount}</div></div> :
-              <div className="icon-count-wrapper"><FaRegHeart className="icon" onClick={clickHandler} /><div className="likesCount">{likesCount}</div></div>}
-            {post.author._id === localStorage.getItem("user-id") && <div><FaTrash className="icon" onClick={deletePost} /></div>}
+
+            <div className="icon-count-wrapper">
+              {doLike ? <FaHeart className="icon" onClick={clickHandlerForLike} /> : <FaRegHeart className="icon" onClick={clickHandlerForLike} />}
+              <div className="likesCount">{likesCount}</div>
+              {post.author._id === localStorage.getItem("user-id") && <FaTrash className="icon" onClick={deletePost} />}
+            </div>
+
           </div>
         </div>
         {showComment && <CommentBox postId={post._id} />}
