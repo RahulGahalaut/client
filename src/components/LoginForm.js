@@ -9,7 +9,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/users/login`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/users/login`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',

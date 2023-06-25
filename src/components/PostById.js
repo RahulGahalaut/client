@@ -5,7 +5,7 @@ export default () => {
     const { postId } = useParams();
     const [post, setPost] = useState();
     useEffect(() => {
-        fetch(`http://localhost:5000/posts/post/${postId}`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/posts/post/${postId}`, {
             headers: {
                 "content-type": "application/json",
                 "authorization": `Bearer ${localStorage.getItem("login-token")}`

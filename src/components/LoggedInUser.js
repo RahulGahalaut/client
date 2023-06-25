@@ -4,7 +4,7 @@ export default () => {
     const [user, setUser] = useState();
     let [createdAt, setCreatedAt] = useState();
     useEffect(() => {
-        fetch(`http://localhost:5000/users/user`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/users/user`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

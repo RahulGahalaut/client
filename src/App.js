@@ -6,7 +6,6 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import Posts from "./components/Posts";
 import Home from "./components/Home";
-import CreatePost from "./components/CreatePost";
 import SignupForm from "./components/SignupForm";
 import PostById from "./components/PostById";
 import FavPosts from "./components/FavPosts";
@@ -29,7 +28,6 @@ export default function App() {
               <Route index element={<LoggedInUser />} />
               <Route path="favourites" element={<FavPosts />} />
               <Route path="my-posts" element={<MyPosts />} />
-              <Route path="create-post" element={<CreatePost />} />
             </Route>
             <Route path="post/:postId" element={<PostById />} />
             <Route path="*" element={<h1>Route Not Defined!</h1>} />

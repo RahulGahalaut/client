@@ -9,7 +9,7 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/users/signup`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/users/signup`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',

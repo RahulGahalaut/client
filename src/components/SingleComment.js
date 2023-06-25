@@ -5,7 +5,7 @@ export default ({ comment, updateCommentSet, deleteFromCommentSet }) => {
     const [edit, setEdit] = useState(false);
     const editedText = useRef()
     const deleteThisComment = () => {
-        fetch(`http://localhost:5000/comments/${comment._id}`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/comments/${comment._id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",
@@ -25,7 +25,7 @@ export default ({ comment, updateCommentSet, deleteFromCommentSet }) => {
             })
     }
     const updateThisComment = () => {
-        fetch(`http://localhost:5000/comments/${comment._id}`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/comments/${comment._id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

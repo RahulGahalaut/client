@@ -11,10 +11,6 @@ export default () => {
         {
             name: "My Post",
             redirect_to: "/profile/my-posts"
-        },
-        {
-            name: "Create Post",
-            redirect_to: "/profile/create-post"
         }
     ];
     return (

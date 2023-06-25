@@ -6,6 +6,19 @@
   grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
+.create-post-area {
+  background-color: rgb(210, 220, 219);
+  border-radius: 0 0 10px 10px;
+  font-size: larger;
+}
+
+.create-post-area .create-post-button {
+  font-size: 40px;
+  padding: 0;
+  border: none;
+  background: none
+}
+
 @media (max-width: 768px) {
   .posts-container {
     padding: 5px;

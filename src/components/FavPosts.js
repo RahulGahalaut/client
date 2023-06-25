@@ -4,7 +4,7 @@ import PostCard from "./PostCard";
 export default () => {
     const [posts, setPosts] = useState();
     useEffect(() => {
-        fetch(`http://localhost:5000/reactions/favs`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/favs`, {
             headers: {
                 "content-type": "application/json",
                 "authorization": `Bearer ${localStorage.getItem("login-token")}`

@@ -1,13 +1,11 @@
 import "./CreatePost.css"
 import { useRef } from "react"
-import { useNavigate } from "react-router-dom";
-export default () => {
-    const navigateTo = useNavigate()
+export default ({ setShowCreatePost, setReloadPost, reloadPost }) => {
     const title = useRef();
     const content = useRef();
     const createNewPost = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/posts/create`, {
+        fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/posts/create`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -21,7 +19,8 @@ export default () => {
             .then(response => response.json())
             .then(post => {
                 console.log(post);
-                navigateTo('/posts');
+                setShowCreatePost(false)
+                setReloadPost(!reloadPost)
             })
     }
     return (

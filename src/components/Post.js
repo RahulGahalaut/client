@@ -14,7 +14,7 @@ export default ({ post }) => {
   const createdAt = new Date(post.createdAt);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reactions/like/${post._id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/like/${post._id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -37,7 +37,7 @@ export default ({ post }) => {
   const deletePost = async () => {
     const result = window.confirm("are you sure?")
     if (result) {
-      fetch(`http://localhost:5000/posts/delete/${post._id}`, {
+      fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/posts/delete/${post._id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -58,7 +58,7 @@ export default ({ post }) => {
 
 
   const deleteLikeOnPost = () => {
-    fetch(`http://localhost:5000/reactions/like/${post._id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/like/${post._id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -78,7 +78,7 @@ export default ({ post }) => {
   }
 
   const postLikeOnPost = () => {
-    fetch(`http://localhost:5000/reactions/like/${post._id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/like/${post._id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -100,7 +100,7 @@ export default ({ post }) => {
 
   const deleteFavMarkOnPost = () => {
     console.log("delete method invoked!")
-    fetch(`http://localhost:5000/reactions/favs/${post._id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/favs/${post._id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -118,7 +118,7 @@ export default ({ post }) => {
       })
   }
   const markFavOnPost = () => {
-    fetch(`http://localhost:5000/reactions/favs/${post._id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/favs/${post._id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

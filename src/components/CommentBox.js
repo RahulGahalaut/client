@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import "./CommentBox.css";
 import SingleComment from "./SingleComment";
-export default ({ postId }) => {
 
+export default ({ postId }) => {
   const [comments, setComments] = useState();
   useEffect(() => {
-    fetch(`http://localhost:5000/comments/${postId}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/comments/${postId}`, {
       "headers": {
         "content-type": "application/json",
         "authorization": `Bearer ${localStorage.getItem("login-token")}`
@@ -25,7 +25,7 @@ export default ({ postId }) => {
   const newComment = useRef();
   const addNewComment = () => {
     console.log(newComment);
-    fetch(`http://localhost:5000/comments/${postId}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/comments/${postId}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -42,18 +42,18 @@ export default ({ postId }) => {
       })
 
   }
-  const updateComments=(newComment)=>{
-    const updatedComments=comments.map(comment=>{
-      if(comment._id==newComment._id)
-      return newComment
+  const updateComments = (newComment) => {
+    const updatedComments = comments.map(comment => {
+      if (comment._id == newComment._id)
+        return newComment
       else
-      return comment;
+        return comment;
     })
     setComments(updatedComments);
   }
 
-  const deleteCommentFromComments=(deletedComment)=>{
-    const remainingComments=comments.filter(comment=>comment._id!==deletedComment._id)
+  const deleteCommentFromComments = (deletedComment) => {
+    const remainingComments = comments.filter(comment => comment._id !== deletedComment._id)
     setComments(remainingComments);
   }
   return (

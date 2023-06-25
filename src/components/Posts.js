@@ -1,10 +1,15 @@
 import "./Posts.css";
 import { useState, useEffect } from "react";
 import PostCard from "./PostCard";
+
+import CreatePost from "./CreatePost";
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 export default () => {
   const [posts, setPosts] = useState();
+  const [showCreatePost, setShowCreatePost] = useState(false)
+  const [reloadPost, setReloadPost] = useState(false)
   useEffect(() => {
-    fetch(`http://localhost:5000/posts/`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/posts/`, {
       headers: {
         "content-type": "application/json",
         "authorization": `Bearer ${localStorage.getItem("login-token")}`
@@ -16,14 +21,21 @@ export default () => {
         setPosts(object.posts)
       })
 
-  }, [])
+  }, [reloadPost])
 
   return posts ? (
-    <div className="posts-container">
-      {posts.map((post) => (
-        <PostCard post={post} />
-      ))}
-    </div>
+    <>
+      <div className="create-post-area">
+        <button class="create-post-button" onClick={() => setShowCreatePost(!showCreatePost)}>{showCreatePost ? <FaMinusCircle /> : <FaPlusCircle />}</button>
+        {showCreatePost && <CreatePost setShowCreatePost={setShowCreatePost} setReloadPost={setReloadPost} reloadPost={reloadPost} />}
+      </div>
+      <div className="posts-container">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+
+    </>
   ) : (
     <>Loading...</>
   );
