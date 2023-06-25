@@ -15,12 +15,12 @@ export default () => {
         </p>
       </div>
       <div className="developer-contact-container">
-        <a href={process.env.REACT_APP_CONTACT_LINKEDIN}><FaLinkedin className="contact-icon" /></a>
-        <a href={process.env.REACT_APP_CONTACT_GITHUB}><FaGithub className="contact-icon" /></a>
-        <a href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}><FaEnvelope className="contact-icon" /></a>
-        <a href={`tel:${process.env.REACT_APP_CONTACT_PHONE}`}><FaPhone className="contact-icon" /></a>
-        <a href={process.env.REACT_APP_CONTACT_INSTAGRAM}><FaInstagram className="contact-icon" /></a>
-        <a href={process.env.REACT_APP_CONTACT_FACEBOOK}><FaFacebook className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_LINKEDIN} target="_blank"><FaLinkedin className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_GITHUB} target="_blank"><FaGithub className="contact-icon" /></a>
+        <a href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`} ><FaEnvelope className="contact-icon" /></a>
+        <a href={`tel:${process.env.REACT_APP_CONTACT_PHONE}`} ><FaPhone className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_INSTAGRAM} target="_blank"><FaInstagram className="contact-icon" /></a>
+        <a href={process.env.REACT_APP_CONTACT_FACEBOOK} target="_blank"><FaFacebook className="contact-icon" /></a>
       </div>
 
     </div>
