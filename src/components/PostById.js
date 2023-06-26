@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Post from "./Post";
+import "./PostById.css"
 export default () => {
     const { postId } = useParams();
     const [post, setPost] = useState();
@@ -19,7 +20,7 @@ export default () => {
 
     }, [])
     return post ? (
-        <div className="post-container">
+        <div className="post-by-id-container">
             <Post post={post} />
         </div>
     ) : (

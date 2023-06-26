@@ -40,12 +40,12 @@ const LoginForm = () => {
       <form className="login-form" onSubmit={handleSubmit}>
         <input ref={username} type="text" placeholder="@username" />
         <input ref={password} type="password" placeholder="@password" minLength="8" />
-        <button className="submit-button" type="submit">
+        <button className="submit-button-login" type="submit">
           submit
         </button>
       </form>
-      <div>
-        <p>don't have an account yet? <NavLink to="/signup">Create Now</NavLink></p>
+      <div className="link-to-signup">
+        <p>Don't have an account yet? <NavLink to="/signup" className="signup-button">Create Now</NavLink></p>
       </div>
 
     </div>

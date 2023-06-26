@@ -55,7 +55,7 @@ export default ({ comment, updateCommentSet, deleteFromCommentSet }) => {
                 <b>
                     <i>@{comment.user.username}</i>
                 </b>
-                -{edit ? (
+                - {edit ? (
                     <>
                         <textarea ref={editedText}>{comment.text}</textarea>
                     </>

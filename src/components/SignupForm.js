@@ -40,12 +40,12 @@ const SignupForm = () => {
             <form className="signup-form" onSubmit={handleSubmit}>
                 <input ref={username} type="text" placeholder="@username" minLength="8" />
                 <input ref={password} type="password" placeholder="@password" minLength="8" />
-                <button className="submit-button" type="submit">
+                <button className="submit-button-signup" type="submit">
                     submit
                 </button>
             </form>
-            <div>
-                <p>already have an account? <NavLink to="/login">LogIn</NavLink></p>
+            <div className="link-to-login">
+                <p>already have an account? <NavLink to="/login" className="login-button">LogIn</NavLink></p>
             </div>
         </div>
     );
