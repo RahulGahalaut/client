@@ -1,13 +1,15 @@
 import { Navigate, useNavigate, NavLink } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Loader from "./Loader";
 import "./LoginForm.css";
 const LoginForm = () => {
 
   const navigateTo = useNavigate()
   const username = useRef();
-  const password = useRef()
-
+  const password = useRef();
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/users/login`, {
       method: "POST",
@@ -47,8 +49,9 @@ const LoginForm = () => {
       <div className="link-to-signup">
         <p>Don't have an account yet? <NavLink to="/signup" className="signup-button">Create Now</NavLink></p>
       </div>
-
+      {loading && <Loader message="Wait a moment" />}
     </div>
+
   );
 };
 

@@ -16,20 +16,21 @@
 }
 
 .new-post-container input,
-.new-post-container textarea {
+.new-post-container .new-post-content {
     width: 100%;
     margin: 10px;
     padding: 10px;
     color: black;
-    background-color: rgb(189, 189, 190);
+    background-color: white;
     border: none;
     border-radius: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: large;
 }
 
+
 .new-post-container input:focus,
-.new-post-container textarea:focus {
+.new-post-container .new-post-content:focus {
     outline: none;
     box-shadow: 0 0 5px 1px black;
 }

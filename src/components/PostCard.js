@@ -1,15 +1,24 @@
 import { NavLink } from "react-router-dom";
+import ReactQuill from "react-quill";
 import "./PostCard.css"
 export default ({ post }) => {
-    const createdAt = new Date(post.createdAt);
+
     return (
-        <NavLink to={`/post/${post._id}`} className="post-card">
+
+        <>{post && <NavLink to={`/post/${post._id}`} className="post-card">
+            <p className="post-card-content">
+                <ReactQuill
+                    className="post-content"
+                    value={post.content}
+                    readOnly={true}
+                    theme={"bubble"}
+                />
+            </p>
             <h3 className="post-card-title">{post.title}</h3>
-            <p className="post-card-content">{post.content.slice(0, 100)}...</p>
             <div className="username-time-wrapper">
                 <i className="author">By- {post.author.username}</i>
-                <div>{createdAt.toLocaleString("en-US", { timeZone: 'Asia/Kolkata', dateStyle: "short", timeStyle: "short" })}</div>
+                <div>{new Date(post.createdAt).toLocaleString("en-US", { timeZone: 'Asia/Kolkata', dateStyle: "short", timeStyle: "short" })}</div>
             </div>
-        </NavLink>
+        </NavLink>}</>
     )
 }

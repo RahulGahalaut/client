@@ -13,10 +13,16 @@
 }
 
 .create-post-area .create-post-button {
-  font-size: 40px;
-  padding: 0;
+  margin: 10px 0 0 10px;
+  font-size: 20px;
+  padding: 10px;
   border: none;
-  background: none
+  background: blue;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 768px) {

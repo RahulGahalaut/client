@@ -1,10 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import "./CommentBox.css";
+import Loader from "./Loader";
 import SingleComment from "./SingleComment";
 
 export default ({ postId }) => {
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState([]);
+  const newComment = useRef();
+  let [loading, setLoading] = useState(false)
+
   useEffect(() => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/comments/${postId}`, {
       "headers": {
         "content-type": "application/json",
@@ -13,6 +18,7 @@ export default ({ postId }) => {
     })
       .then(response => response.json())
       .then(object => {
+        setLoading(false)
         if ("message" in object) {
           alert(object.message)
         }
@@ -22,9 +28,9 @@ export default ({ postId }) => {
       })
 
   }, [])
-  const newComment = useRef();
+
   const addNewComment = () => {
-    console.log(newComment);
+    setLoading(true)
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/comments/${postId}`, {
       method: "POST",
       headers: {
@@ -38,7 +44,15 @@ export default ({ postId }) => {
     })
       .then(response => response.json())
       .then(comment => {
-        setComments([comment, ...comments]);
+        setLoading(false)
+        if ("message" in comment) {
+          alert(comment.message)
+        }
+        else {
+          console.log(comment)
+          setComments([comment, ...comments]);
+        }
+
       })
 
   }
@@ -82,7 +96,7 @@ export default ({ postId }) => {
         </>
       ) : (
         <>
-          Loading...
+          {loading ? <Loader message="Loading comments" /> : "No Comments"}
         </>
       )}
     </div>

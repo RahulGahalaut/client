@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { json, useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
 import "./Post.css";
+import Loader from "./Loader";
 import CommentBox from "./CommentBox";
 import { FaTrash, FaHeart, FaRegHeart, FaStar, FaRegStar } from 'react-icons/fa';
 
 export default ({ post }) => {
 
-  const navigateTo = useNavigate()
+  let navigateTo = useNavigate()
   let [showComment, setShowComment] = useState(false);
   let [doLike, setDoLike] = useState(true);
   let [isFav, setIsFav] = useState()
   let [likesCount, setLikesCount] = useState();
+  let [loading, setLoading] = useState(false);
+
   const createdAt = new Date(post.createdAt);
 
   useEffect(() => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/like/${post._id}`, {
       method: "GET",
       headers: {
@@ -23,6 +28,7 @@ export default ({ post }) => {
     })
       .then(response => response.json())
       .then(reactionObject => {
+        setLoading(false)
         if ("message" in reactionObject) {
           alert(reactionObject.message)
         }
@@ -35,8 +41,10 @@ export default ({ post }) => {
   }, [])
 
   const deletePost = async () => {
+
     const result = window.confirm("are you sure?")
     if (result) {
+      setLoading(true)
       fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/posts/delete/${post._id}`, {
         method: "DELETE",
         headers: {
@@ -46,6 +54,7 @@ export default ({ post }) => {
       })
         .then(response => response.json())
         .then(object => {
+          setLoading(false)
           if ("message" in object) {
             alert(object.message)
           }
@@ -58,6 +67,7 @@ export default ({ post }) => {
 
 
   const deleteLikeOnPost = () => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/like/${post._id}`, {
       method: "DELETE",
       headers: {
@@ -67,6 +77,7 @@ export default ({ post }) => {
     })
       .then(response => response.json())
       .then(reactionObject => {
+        setLoading(false)
         if ("message" in reactionObject) {
           alert(reactionObject.message)
         }
@@ -78,6 +89,7 @@ export default ({ post }) => {
   }
 
   const postLikeOnPost = () => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/like/${post._id}`, {
       method: "POST",
       headers: {
@@ -87,6 +99,7 @@ export default ({ post }) => {
     })
       .then(response => response.json())
       .then(reactionObject => {
+        setLoading(false)
         if ("message" in reactionObject) {
           alert(reactionObject.message)
         }
@@ -99,6 +112,7 @@ export default ({ post }) => {
   }
 
   const deleteFavMarkOnPost = () => {
+    setLoading(true);
     console.log("delete method invoked!")
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/favs/${post._id}`, {
       method: "DELETE",
@@ -109,6 +123,7 @@ export default ({ post }) => {
     })
       .then(response => response.json())
       .then(reactionObject => {
+        setLoading(false)
         if ("message" in reactionObject) {
           alert(reactionObject.message)
         }
@@ -118,6 +133,7 @@ export default ({ post }) => {
       })
   }
   const markFavOnPost = () => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/reactions/favs/${post._id}`, {
       method: "POST",
       headers: {
@@ -127,6 +143,7 @@ export default ({ post }) => {
     })
       .then(response => response.json())
       .then(reactionObject => {
+        setLoading(false)
         if ("message" in reactionObject) {
           alert(reactionObject.message)
         }
@@ -166,7 +183,12 @@ export default ({ post }) => {
 
       <div className="post-container">
         <h3 className="post-title">{post.title}</h3>
-        <p className="post-content">{post.content}</p>
+        <ReactQuill
+          className="post-content"
+          value={post.content}
+          readOnly={true}
+          theme={"bubble"}
+        />
         <p className="author-container">
           <div>{createdAt.toLocaleString("en-US", { timeZone: 'Asia/Kolkata', dateStyle: "medium", timeStyle: "short" })}</div>
           <i className="author">- {post.author.username}</i>
@@ -193,6 +215,7 @@ export default ({ post }) => {
         </div>
         {showComment && <CommentBox postId={post._id} />}
       </div>
+      {loading && <Loader message="Loading this post" />}
     </div>
   );
 };

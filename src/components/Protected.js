@@ -24,25 +24,27 @@ const ProtectedContent = () => {
   ];
   return localStorage.getItem("login-token") ? (
     <div className="content-container">
-      <nav className="navbar">
-        <div className="brand-nav-link-wrapper">
-          <p className="navbar-brand">BlogPost</p>
-          {tabs.map((tab) => {
-            return (
-              <NavLink className="nav-link" to={tab.redirect_to}>
-                {tab.name}
-              </NavLink>
-            );
-          })}
-        </div>
-        <button className="logout-button" onClick={() => { localStorage.removeItem("login-token"); navigateTo("/login") }}>
-          LogOut
-        </button>
-      </nav>
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="content-wrapper">
+        <nav className="navbar">
+          <div className="brand-nav-link-wrapper">
+            <p className="navbar-brand">BlogPost</p>
+            {tabs.map((tab) => {
+              return (
+                <NavLink className="nav-link" to={tab.redirect_to}>
+                  {tab.name}
+                </NavLink>
+              );
+            })}
+          </div>
+          <button className="logout-button" onClick={() => { localStorage.removeItem("login-token"); navigateTo("/login") }}>
+            LogOut
+          </button>
+        </nav>
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   ) : (
     <Navigate to="/login" />

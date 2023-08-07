@@ -1,9 +1,12 @@
 import "./LoggedInUser.css"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import Loader from "./Loader";
 export default () => {
     const [user, setUser] = useState();
+    let [loading, setLoading] = useState(false);
     let [createdAt, setCreatedAt] = useState();
     useEffect(() => {
+        setLoading(true)
         fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/users/user`, {
             headers: {
                 'Accept': 'application/json',
@@ -13,6 +16,7 @@ export default () => {
         })
             .then(response => response.json())
             .then(userObject => {
+                setLoading(false);
                 if ("message" in userObject) {
                     alert(userObject.message)
                 }
@@ -31,6 +35,8 @@ export default () => {
             <p>Account Created - {createdAt.toLocaleString("en-US", { timeZone: 'Asia/Kolkata', dateStyle: "medium", timeStyle: "short" })}</p>
         </div>
     ) : (
-        <>Loading user...</>
+        <>
+            {loading ? <Loader message="Loading User Info" /> : "No Information about user."}
+        </>
     )
 }

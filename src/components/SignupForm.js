@@ -1,14 +1,17 @@
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Loader from "./Loader";
 import "./SignupForm.css";
 const SignupForm = () => {
 
     const navigateTo = useNavigate()
     const username = useRef();
-    const password = useRef()
+    const password = useRef();
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true)
         fetch(`${process.env.REACT_APP_SERVER_HOSTNAME}/users/signup`, {
             method: "POST",
             headers: {
@@ -22,6 +25,7 @@ const SignupForm = () => {
         })
             .then(response => response.json())
             .then(data => {
+                setLoading(false)
                 if ("message" in data) {
                     alert(data.message)
                 }
@@ -36,18 +40,22 @@ const SignupForm = () => {
     return localStorage.getItem("login-token") ? (
         <Navigate to="/" />
     ) : (
-        <div className="signup-form-container">
-            <form className="signup-form" onSubmit={handleSubmit}>
-                <input ref={username} type="text" placeholder="@username" minLength="8" />
-                <input ref={password} type="password" placeholder="@password" minLength="8" />
-                <button className="submit-button-signup" type="submit">
-                    submit
-                </button>
-            </form>
-            <div className="link-to-login">
-                <p>already have an account? <NavLink to="/login" className="login-button">LogIn</NavLink></p>
+        <>
+            <div className="signup-form-container">
+                <form className="signup-form" onSubmit={handleSubmit}>
+                    <input ref={username} type="text" placeholder="@username" minLength="8" />
+                    <input ref={password} type="password" placeholder="@password" minLength="8" />
+                    <button className="submit-button-signup" type="submit">
+                        submit
+                    </button>
+                </form>
+                <div className="link-to-login">
+                    <p>already have an account? <NavLink to="/login" className="login-button">LogIn</NavLink></p>
+                </div>
             </div>
-        </div>
+            {loading && <Loader />}
+        </>
+
     );
 };
 
